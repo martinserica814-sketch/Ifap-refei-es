@@ -2219,7 +2219,7 @@
            CARDÁPIOS DAS TURMAS
         ========================================== */
 
-        const cardapios = {
+        let cardapios = {
 
             INF01: {
                 contraturno: ["terca", "quinta"],
@@ -2468,7 +2468,7 @@
            LISTA DE AGENDAMENTOS
         ========================================== */
 
-        const agendamentos = [];
+        let agendamentos = [];
 
 
 
@@ -3476,7 +3476,284 @@
 
                 }
             );
+        /* ==========================================
+           CONEXÃO COMPLETA COM O NODE.JS
+        ========================================== */
 
+        async function carregarDadosDoServidor() {
+
+            try {
+
+                const resposta = await fetch(
+                    "/api/dados"
+                );
+
+
+                if (!resposta.ok) {
+
+                    throw new Error(
+                        "Não foi possível carregar os dados do servidor."
+                    );
+
+                }
+
+
+                const dados = await resposta.json();
+
+
+                /* =====================================
+                   CARREGAR CARDÁPIOS SALVOS
+                ===================================== */
+
+                if (
+                    dados.cardapios &&
+                    Object.keys(dados.cardapios).length > 0
+                ) {
+
+                    /*
+                       Como cardapios foi criado com const,
+                       não podemos substituir a variável.
+
+                       Então apagamos o conteúdo antigo
+                       e colocamos os dados do servidor.
+                    */
+
+                    Object.keys(cardapios).forEach(
+                        function(turma) {
+
+                            delete cardapios[turma];
+
+                        }
+                    );
+
+
+                    Object.assign(
+                        cardapios,
+                        dados.cardapios
+                    );
+
+                }
+
+
+                /* =====================================
+                   CARREGAR AGENDAMENTOS SALVOS
+                ===================================== */
+
+                if (
+                    Array.isArray(
+                        dados.agendamentos
+                    )
+                ) {
+
+                    /*
+                       Limpa os agendamentos atuais
+                    */
+
+                    agendamentos.splice(
+                        0,
+                        agendamentos.length
+                    );
+
+
+                    /*
+                       Coloca os agendamentos
+                       que foram salvos no Node.js
+                    */
+
+                    dados.agendamentos.forEach(
+                        function(agendamento) {
+
+                            agendamentos.push(
+                                agendamento
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                console.log(
+                    "Dados carregados do servidor com sucesso!"
+                );
+
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao carregar dados:",
+                    erro
+                );
+
+            }
+
+        }
+
+
+
+        /* ==========================================
+           SALVAR DADOS NO NODE.JS
+        ========================================== */
+
+        async function salvarDadosNoServidor() {
+
+            try {
+
+                const resposta = await fetch(
+                    "/api/dados",
+                    {
+
+                        method: "POST",
+
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+
+                        body: JSON.stringify({
+
+                            cardapios:
+                                cardapios,
+
+
+                            agendamentos:
+                                agendamentos
+
+                        })
+
+                    }
+                );
+
+
+                if (!resposta.ok) {
+
+                    throw new Error(
+                        "Não foi possível salvar os dados."
+                    );
+
+                }
+
+
+                console.log(
+                    "Dados salvos com sucesso!"
+                );
+
+
+            } catch (erro) {
+
+                console.error(
+                    "Erro ao salvar dados:",
+                    erro
+                );
+
+            }
+
+        }
+
+
+
+        /* ==========================================
+           SALVAR QUANDO ADICIONAR ALIMENTO
+        ========================================== */
+
+        const adicionarItemAdminOriginal =
+            adicionarItemAdmin;
+
+
+        window.adicionarItemAdmin =
+            function() {
+
+                adicionarItemAdminOriginal();
+
+                salvarDadosNoServidor();
+
+            };
+
+
+
+        /* ==========================================
+           SALVAR QUANDO EXCLUIR ALIMENTO
+        ========================================== */
+
+        const excluirItemAdminOriginal =
+            excluirItemAdmin;
+
+
+        window.excluirItemAdmin =
+            function(
+                turma,
+                dia,
+                indice
+            ) {
+
+                excluirItemAdminOriginal(
+                    turma,
+                    dia,
+                    indice
+                );
+
+                salvarDadosNoServidor();
+
+            };
+
+
+
+        /* ==========================================
+           SALVAR QUANDO CRIAR AGENDAMENTO
+        ========================================== */
+
+        const confirmarAgendamentoOriginal =
+            confirmarAgendamento;
+
+
+        window.confirmarAgendamento =
+            function() {
+
+                confirmarAgendamentoOriginal();
+
+                salvarDadosNoServidor();
+
+            };
+
+
+
+        /* ==========================================
+           SALVAR QUANDO EXCLUIR AGENDAMENTO
+        ========================================== */
+
+        const excluirAgendamentoOriginal =
+            excluirAgendamento;
+
+
+        window.excluirAgendamento =
+            function(id) {
+
+                excluirAgendamentoOriginal(
+                    id
+                );
+
+                salvarDadosNoServidor();
+
+            };
+
+
+
+        /* ==========================================
+           CARREGAR DADOS AUTOMATICAMENTE
+        ========================================== */
+
+        window.addEventListener(
+            "load",
+            function() {
+
+                carregarDadosDoServidor();
+
+            }
+        );
     </script>
 
 </body>

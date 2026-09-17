@@ -1,2319 +1,636 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+/* =====================================
+   CARDÁPIOS DAS TURMAS
+===================================== */
 
-<head>
+let cardapios = {
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    INF01: {
+        segunda: ["Arroz", "Feijão", "Frango assado", "Salada"],
 
-    <title>IFAP Refeições</title>
+        terca: [
+            "Arroz",
+            "Feijão",
+            "Carne moída",
+            "Farofa",
+            "Contra turno: Bolo e suco"
+        ],
 
-    <style>
+        quarta: ["Macarrão", "Frango", "Salada"],
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        quinta: [
+            "Arroz",
+            "Feijão",
+            "Peixe",
+            "Legumes",
+            "Contra turno: Sanduíche natural e suco"
+        ],
+
+        sexta: ["Arroz", "Feijão", "Carne assada", "Salada"]
+    },
+
+    INF02: {
+        segunda: ["Arroz", "Feijão", "Carne assada", "Salada"],
+
+        terca: ["Macarrão", "Frango", "Legumes"],
+
+        quarta: [
+            "Arroz",
+            "Feijão",
+            "Frango",
+            "Salada",
+            "Contra turno: Pão com queijo e suco"
+        ],
+
+        quinta: ["Arroz", "Feijão", "Carne moída", "Farofa"],
+
+        sexta: [
+            "Arroz",
+            "Feijão",
+            "Peixe",
+            "Salada",
+            "Contra turno: Fruta e iogurte"
+        ]
+    },
+
+    INF03: {
+        segunda: ["Arroz", "Feijão", "Frango", "Salada"],
+
+        terca: [
+            "Arroz",
+            "Carne",
+            "Legumes",
+            "Contra turno: Bolo e suco"
+        ],
+
+        quarta: ["Macarrão", "Carne moída", "Salada"],
+
+        quinta: ["Arroz", "Feijão", "Frango assado", "Farofa"],
+
+        sexta: [
+            "Arroz",
+            "Feijão",
+            "Carne",
+            "Salada",
+            "Contra turno: Sanduíche e suco"
+        ]
+    },
+
+    MAB1: {
+        segunda: ["Arroz", "Feijão", "Frango"],
+
+        terca: [
+            "Macarrão",
+            "Carne",
+            "Salada",
+            "Contra turno: Fruta e suco"
+        ],
+
+        quarta: ["Arroz", "Feijão", "Peixe", "Legumes"],
+
+        quinta: ["Arroz", "Frango", "Salada"],
+
+        sexta: [
+            "Arroz",
+            "Feijão",
+            "Carne",
+            "Contra turno: Pão com queijo"
+        ]
+    },
+
+    MAB2: {
+        segunda: ["Arroz", "Feijão", "Carne"],
+
+        terca: ["Macarrão", "Frango", "Salada"],
+
+        quarta: [
+            "Arroz",
+            "Feijão",
+            "Peixe",
+            "Contra turno: Bolo e suco"
+        ],
+
+        quinta: ["Arroz", "Carne moída", "Legumes"],
+
+        sexta: [
+            "Arroz",
+            "Feijão",
+            "Frango",
+            "Contra turno: Fruta e iogurte"
+        ]
+    },
+
+    MAB3: {
+        segunda: ["Arroz", "Feijão", "Frango assado"],
+
+        terca: ["Arroz", "Carne", "Salada"],
+
+        quarta: [
+            "Macarrão",
+            "Frango",
+            "Legumes",
+            "Contra turno: Sanduíche natural"
+        ],
+
+        quinta: ["Arroz", "Feijão", "Peixe"],
+
+        sexta: [
+            "Arroz",
+            "Carne",
+            "Salada",
+            "Contra turno: Bolo e suco"
+        ]
+    },
+
+    ADM1: {
+        segunda: ["Arroz", "Feijão", "Carne", "Salada"],
+
+        terca: ["Macarrão", "Frango", "Farofa"],
+
+        quarta: [
+            "Arroz",
+            "Feijão",
+            "Peixe",
+            "Contra turno: Fruta e suco"
+        ],
+
+        quinta: ["Arroz", "Carne moída", "Legumes"],
+
+        sexta: [
+            "Arroz",
+            "Feijão",
+            "Frango",
+            "Contra turno: Pão com queijo"
+        ]
+    },
+
+    ADM2: {
+        segunda: ["Arroz", "Feijão", "Frango"],
+
+        terca: [
+            "Arroz",
+            "Carne",
+            "Salada",
+            "Contra turno: Bolo e suco"
+        ],
+
+        quarta: ["Macarrão", "Frango", "Legumes"],
+
+        quinta: ["Arroz", "Feijão", "Peixe"],
+
+        sexta: [
+            "Arroz",
+            "Carne",
+            "Legumes",
+            "Contra turno: Sanduíche natural"
+        ]
+    },
+
+    ADM3: {
+        segunda: ["Arroz", "Feijão", "Carne assada"],
+
+        terca: ["Macarrão", "Frango", "Salada"],
+
+        quarta: [
+            "Arroz",
+            "Feijão",
+            "Carne moída",
+            "Contra turno: Fruta e iogurte"
+        ],
+
+        quinta: ["Arroz", "Peixe", "Legumes"],
+
+        sexta: [
+            "Arroz",
+            "Feijão",
+            "Frango",
+            "Contra turno: Bolo e suco"
+        ]
+    },
+
+    FLO1: {
+        segunda: [
+            "Arroz",
+            "Feijão",
+            "Frango",
+            "Contra turno: Sanduíche e suco"
+        ],
+
+        terca: ["Macarrão", "Carne", "Salada"],
+
+        quarta: ["Arroz", "Feijão", "Peixe"],
+
+        quinta: [
+            "Arroz",
+            "Frango",
+            "Salada",
+            "Contra turno: Fruta"
+        ],
+
+        sexta: ["Arroz", "Feijão", "Carne"]
+    },
+
+    FLO2: {
+        segunda: ["Arroz", "Feijão", "Carne"],
+
+        terca: [
+            "Arroz",
+            "Frango",
+            "Legumes",
+            "Contra turno: Bolo e suco"
+        ],
+
+        quarta: ["Macarrão", "Carne moída"],
+
+        quinta: ["Arroz", "Feijão", "Peixe"],
+
+        sexta: [
+            "Arroz",
+            "Frango",
+            "Salada",
+            "Contra turno: Pão com queijo"
+        ]
+    },
+
+    FLO3: {
+        segunda: ["Arroz", "Feijão", "Frango assado"],
+
+        terca: ["Macarrão", "Carne", "Salada"],
+
+        quarta: [
+            "Arroz",
+            "Feijão",
+            "Peixe",
+            "Contra turno: Fruta e suco"
+        ],
+
+        quinta: ["Arroz", "Carne", "Legumes"],
+
+        sexta: [
+            "Arroz",
+            "Feijão",
+            "Frango",
+            "Contra turno: Sanduíche natural"
+        ]
+    }
+};
+
+
+/* =====================================
+   AGENDAMENTOS
+===================================== */
+
+let agendamentos = [];
+
+
+/* =====================================
+   DIAS DA SEMANA
+===================================== */
+
+const diasSemana = [
+    "segunda",
+    "terca",
+    "quarta",
+    "quinta",
+    "sexta"
+];
+
+
+/* =====================================
+   CONEXÃO COM NODE.JS
+===================================== */
+
+async function carregarDadosDoServidor() {
+
+    try {
+
+        const resposta = await fetch("/api/dados");
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao carregar os dados.");
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #ffffff;
-            color: #222222;
+        const dados = await resposta.json();
+
+
+        if (
+            dados.cardapios &&
+            Object.keys(dados.cardapios).length > 0
+        ) {
+
+            cardapios = dados.cardapios;
+
         }
 
-        button {
-            font-family: Arial, Helvetica, sans-serif;
-            cursor: pointer;
+
+        if (Array.isArray(dados.agendamentos)) {
+
+            agendamentos = dados.agendamentos;
+
         }
 
-        .escondida {
-            display: none !important;
-        }
 
-        /* ==============================
-           TELA INICIAL
-        ============================== */
+        console.log("Dados carregados do servidor!");
 
-        .pagina {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    } catch (erro) {
 
-        .conteudo {
-            width: 620px;
-            text-align: center;
-            padding: 40px;
-        }
+        console.error(
+            "Erro ao carregar dados:",
+            erro
+        );
 
-        .conteudo h1 {
-            color: #3ead44;
-            font-size: 27px;
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
+    }
 
-        .botoes {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
+}
 
-        .botao {
-            background-color: #3ead44;
-            color: white;
-            border: 1px solid #319638;
-            border-radius: 4px;
-            padding: 9px 17px;
-            font-size: 12px;
-            font-weight: bold;
-            transition: 0.2s;
-        }
 
-        .botao:hover {
-            background-color: #388e3c;
-        }
+/* =====================================
+   SALVAR NO NODE.JS
+===================================== */
 
-        .admin {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
+async function salvarDadosNoServidor() {
 
-        .senha {
-            width: 190px;
-            height: 30px;
-            padding: 5px 9px;
-            border: 1px solid #8ac68d;
-            border-radius: 3px;
-            font-size: 11px;
-            outline: none;
-        }
+    try {
 
-        .senha:focus {
-            border-color: #3ead44;
-        }
+        const resposta = await fetch(
+            "/api/dados",
+            {
+                method: "POST",
 
-        .entrar {
-            padding: 8px 19px;
-        }
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-        #mensagem {
-            margin-top: 5px;
-            font-size: 12px;
-            color: #d32f2f;
-        }
-
-        .rodape {
-            margin-top: 35px;
-            color: #777777;
-            font-size: 11px;
-        }
-
-        /* ==============================
-           TELAS
-        ============================== */
-
-        .tela {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-        }
-
-        /* ==============================
-           TELA 2 - TURMAS
-        ============================== */
-
-        .container-turma {
-            width: 100%;
-            max-width: 650px;
-            text-align: center;
-        }
-
-        .container-turma h1 {
-            color: #3ead44;
-            font-size: 27px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .subtitulo {
-            color: #777777;
-            font-size: 14px;
-            margin-bottom: 30px;
-        }
-
-        .turmas {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .botao-turma {
-            background-color: #ffffff;
-            color: #3ead44;
-            border: 1px solid #3ead44;
-            border-radius: 6px;
-            padding: 15px 10px;
-            font-size: 14px;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .botao-turma:hover {
-            background-color: #3ead44;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .botao-sair {
-            margin-top: 30px;
-            background-color: #3ead44;
-            color: white;
-            border: 1px solid #319638;
-            border-radius: 4px;
-            padding: 10px 25px;
-            font-size: 12px;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .botao-sair:hover {
-            background-color: #388e3c;
-            transform: translateY(-1px);
-        }
-
-        /* ==============================
-           TELA 3 - CARDÁPIO
-        ============================== */
-
-        .container-cardapio {
-            width: 100%;
-            max-width: 1200px;
-            text-align: center;
-            animation: aparecer 0.4s ease;
-        }
-
-        @keyframes aparecer {
-
-            from {
-                opacity: 0;
-                transform: translateY(15px);
+                body: JSON.stringify({
+                    cardapios: cardapios,
+                    agendamentos: agendamentos
+                })
             }
+        );
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
 
+        if (!resposta.ok) {
+            throw new Error("Erro ao salvar os dados.");
         }
 
-        .titulo-cardapio {
-            color: #777777;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
-        }
-
-        #tituloTurma {
-            color: #3ead44;
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-
-        .descricao-cardapio {
-            color: #777777;
-            font-size: 14px;
-            margin-bottom: 35px;
-        }
-
-        .aviso-semana {
-            background-color: #f4faf4;
-            border: 1px solid #d7ead8;
-            border-radius: 8px;
-            padding: 12px 18px;
-            margin: 0 auto 25px;
-            max-width: 700px;
-            color: #47714a;
-            font-size: 13px;
-        }
-
-        .aviso-semana strong {
-            color: #2e7d32;
-        }
-
-        .semana {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 15px;
-        }
-
-        .dia-cardapio {
-            background-color: #ffffff;
-            border: 1px solid #d8ead9;
-            border-radius: 10px;
-            overflow: hidden;
-            min-height: 270px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: 0.25s;
-        }
-
-        .dia-cardapio:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-        }
-
-        .dia-contraturno {
-            border: 2px solid #3ead44;
-        }
-
-        .dia-contraturno .nome-dia {
-            background-color: #3ead44;
-        }
-
-        .dia-sem-refeicao {
-            border: 1px solid #e2e2e2;
-            background-color: #fafafa;
-        }
-
-        .dia-sem-refeicao .nome-dia {
-            background-color: #eeeeee;
-            color: #777777;
-        }
-
-        .nome-dia {
-            color: white;
-            background-color: #777777;
-            padding: 15px 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .nome-dia span {
-            font-size: 11px;
-            font-weight: bold;
-            opacity: 0.9;
-        }
-
-        .nome-dia strong {
-            font-size: 14px;
-        }
-
-        .status {
-            display: inline-block;
-            margin: 15px auto 5px;
-            padding: 6px 10px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: bold;
-        }
-
-        .status-contraturno {
-            background-color: #e5f5e6;
-            color: #2e7d32;
-        }
-
-        .status-sem-refeicao {
-            background-color: #eeeeee;
-            color: #777777;
-        }
-
-        .dia-cardapio ul {
-            list-style: none;
-            padding: 10px 15px 15px;
-            text-align: left;
-        }
-
-        .dia-cardapio li {
-            padding: 9px 5px;
-            border-bottom: 1px solid #eeeeee;
-            font-size: 13px;
-            color: #444444;
-        }
-
-        .dia-cardapio li:last-child {
-            border-bottom: none;
-        }
-
-        .dia-cardapio li::before {
-            content: "•";
-            color: #3ead44;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .contra-turno-item {
-            color: #2e7d32 !important;
-            font-weight: bold;
-        }
-
-        .sem-refeicao {
-            padding: 35px 15px;
-            color: #999999;
-            font-size: 12px;
-            line-height: 1.5;
-        }
-
-        .sem-refeicao .icone {
-            display: block;
-            font-size: 25px;
-            margin-bottom: 10px;
-            opacity: 0.7;
-        }
-
-        .legenda {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 25px;
-            flex-wrap: wrap;
-            font-size: 11px;
-            color: #777777;
-        }
-
-        .legenda-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .bolinha {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-        }
-
-        .bolinha-verde {
-            background-color: #3ead44;
-        }
-
-        .bolinha-cinza {
-            background-color: #cccccc;
-        }
 
-        .botao-voltar-cardapio {
-            margin-top: 30px;
-            background-color: #3ead44;
-            color: white;
-            border: 1px solid #319638;
-            border-radius: 5px;
-            padding: 11px 25px;
-            font-size: 13px;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .botao-voltar-cardapio:hover {
-            background-color: #388e3c;
-            transform: translateY(-2px);
-        }
-
-        /* ==============================
-           TELA 4 - ADMINISTRADOR
-        ============================== */
-
-        .container-admin {
-            width: 100%;
-            max-width: 1000px;
-            animation: aparecer 0.4s ease;
-        }
-
-        .container-admin > h1 {
-            text-align: center;
-            color: #3ead44;
-            font-size: 30px;
-            margin-bottom: 8px;
-        }
-
-        .subtitulo-admin {
-            text-align: center;
-            color: #777777;
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-
-        .admin-card {
-            background: #ffffff;
-            border: 1px solid #d8ead9;
-            border-radius: 10px;
-            padding: 22px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .admin-card h2 {
-            color: #3ead44;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .admin-form {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .admin-campo {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .admin-campo label {
-            color: #555555;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .admin-campo input,
-        .admin-campo select,
-        .adicionar-alimento input {
-            width: 100%;
-            height: 38px;
-            padding: 8px 10px;
-            border: 1px solid #cfd8cf;
-            border-radius: 5px;
-            outline: none;
-            font-size: 13px;
-            background: white;
-        }
-
-        .admin-campo input:focus,
-        .admin-campo select:focus,
-        .adicionar-alimento input:focus {
-            border-color: #3ead44;
-        }
-
-        .adicionar-alimento {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .botao-admin,
-        .botao-agendar {
-            background-color: #3ead44;
-            color: white;
-            border: 1px solid #319638;
-            border-radius: 5px;
-            padding: 10px 16px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .botao-admin:hover,
-        .botao-agendar:hover {
-            background-color: #388e3c;
-        }
+        console.log("Dados salvos no servidor!");
 
-        .lista-admin {
-            list-style: none;
-            margin-top: 20px;
-        }
-
-        .item-admin {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            padding: 10px;
-            border-bottom: 1px solid #eeeeee;
-            font-size: 13px;
-        }
-
-        .botao-excluir {
-            background-color: #d32f2f;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 6px 9px;
-            cursor: pointer;
-            font-size: 11px;
-        }
-
-        .botao-excluir:hover {
-            background-color: #b71c1c;
-        }
-
-        .sem-agendamentos {
-            text-align: center;
-            padding: 20px;
-            color: #999999;
-            font-size: 13px;
-        }
-
-        .botao-agendar {
-            display: block;
-            margin: 0 auto 20px;
-        }
-
-        .form-agendamento {
-            display: none;
-            background-color: #f8fcf8;
-            border: 1px solid #d8ead9;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .form-agendamento.aberto {
-            display: block;
-        }
+    } catch (erro) {
 
-        .form-agendamento h3 {
-            text-align: center;
-            color: #3ead44;
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-
-        .tabela-agendamentos {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-        }
-
-        .tabela-agendamentos th {
-            background-color: #3ead44;
-            color: white;
-            padding: 10px 7px;
-        }
-
-        .tabela-agendamentos td {
-            padding: 10px 7px;
-            border-bottom: 1px solid #eeeeee;
-            text-align: center;
-        }
+        console.error(
+            "Erro ao salvar:",
+            erro
+        );
 
-        .status-agendamento {
-            background-color: #e5f5e6;
-            color: #2e7d32;
-            padding: 5px 8px;
-            border-radius: 15px;
-            font-size: 10px;
-            font-weight: bold;
-        }
-
-        .botao-sair-admin {
-            display: block;
-            margin: 25px auto 0;
-            background-color: #777777;
-            color: white;
-            border: 1px solid #666666;
-            border-radius: 5px;
-            padding: 10px 25px;
-            font-size: 12px;
-            font-weight: bold;
-        }
+    }
 
-        .botao-sair-admin:hover {
-            background-color: #555555;
-        }
+}
 
-        /* ==============================
-           RESPONSIVIDADE
-        ============================== */
 
-        @media (max-width: 1000px) {
+/* =====================================
+   VERIFICAR CONTRA TURNO
+===================================== */
 
-            .semana {
-                grid-template-columns: repeat(3, 1fr);
-            }
+function ehContraTurno(alimentos) {
 
-        }
+    return alimentos.some(function (alimento) {
 
-        @media (max-width: 750px) {
+        return alimento.startsWith(
+            "Contra turno:"
+        );
 
-            .semana {
-                grid-template-columns: repeat(2, 1fr);
-            }
+    });
 
-            .admin-form {
-                grid-template-columns: 1fr;
-            }
+}
 
-        }
 
-        @media (max-width: 650px) {
+/* =====================================
+   ENTRAR COMO ALUNO
+===================================== */
 
-            .conteudo {
-                width: 100%;
-                padding: 25px;
-            }
+function entrarAluno() {
 
-            .conteudo h1 {
-                font-size: 23px;
-            }
+    document.querySelector(".pagina").style.display =
+        "none";
 
-            .botoes {
-                flex-direction: column;
-                align-items: center;
-            }
+    document
+        .getElementById("tela2")
+        .classList.remove("escondida");
 
-            .botao {
-                width: 220px;
-            }
+}
 
-            .turmas {
-                grid-template-columns: repeat(2, 1fr);
-            }
 
-            .adicionar-alimento {
-                flex-direction: column;
-            }
+/* =====================================
+   ABRIR CARDÁPIO
+===================================== */
 
-            .tabela-agendamentos {
-                display: block;
-                overflow-x: auto;
-            }
+function abrirCardapio(turma) {
 
-        }
+    document
+        .getElementById("tela2")
+        .classList.add("escondida");
 
-        @media (max-width: 500px) {
+    document
+        .getElementById("tela3")
+        .classList.remove("escondida");
 
-            .semana {
-                grid-template-columns: 1fr;
-            }
+    document
+        .getElementById("tituloTurma")
+        .textContent = turma;
 
-            #tituloTurma {
-                font-size: 27px;
-            }
+    const cardapio = cardapios[turma];
 
-            .tela {
-                padding: 15px;
-            }
+    diasSemana.forEach(function (dia) {
 
-        }
+        mostrarRefeicao(
+            dia,
+            cardapio[dia]
+        );
 
-    </style>
+    });
 
-</head>
+}
 
-<body>
 
-    <!-- =================================================
-         TELA 1
-    ================================================= -->
+/* =====================================
+   MOSTRAR REFEIÇÕES
+===================================== */
 
-    <div class="pagina">
+function mostrarRefeicao(dia, alimentos) {
 
-        <main class="conteudo">
+    const lista =
+        document.getElementById(dia);
 
-            <h1>
-                Sejam bem-vindos ao Ifap Refeições
-            </h1>
+    const card =
+        document.getElementById(
+            "card-" + dia
+        );
 
-            <div class="botoes">
+    const status =
+        document.getElementById(
+            "status-" + dia
+        );
 
-                <button
-                    class="botao"
-                    onclick="entrarAluno()">
+    lista.innerHTML = "";
+    status.innerHTML = "";
 
-                    Login como Aluno
+    card.classList.remove(
+        "dia-contraturno",
+        "dia-sem-refeicao"
+    );
 
-                </button>
 
-                <button
-                    class="botao"
-                    onclick="mostrarMensagemAdmin()">
+    if (!alimentos || alimentos.length === 0) {
 
-                    Login como Administrador
+        card.classList.add(
+            "dia-sem-refeicao"
+        );
 
-                </button>
+        status.innerHTML =
+            '<span class="status status-sem-refeicao">SEM REFEIÇÃO</span>';
 
+        lista.innerHTML = `
+            <div class="sem-refeicao">
+                <span class="icone">🍽️</span>
+                Não há refeição programada
+                para esta turma neste dia.
             </div>
+        `;
 
-            <div class="admin">
+        return;
 
-                <input
-                    type="password"
-                    class="senha"
-                    id="senha"
-                    placeholder="Senha do Administrador">
+    }
 
-                <button
-                    class="botao entrar"
-                    onclick="entrarAdministrador()">
 
-                    Entrar
+    const contraTurno =
+        ehContraTurno(alimentos);
 
-                </button>
 
-                <p id="mensagem"></p>
+    if (contraTurno) {
 
-            </div>
+        card.classList.add(
+            "dia-contraturno"
+        );
 
-            <p class="rodape">
-                INSTITUIÇÃO IFAP @Campus Laranjal do Jari
-            </p>
+        status.innerHTML =
+            '<span class="status status-contraturno">🍽️ CONTRA TURNO</span>';
 
-        </main>
+    } else {
 
-    </div>
+        status.innerHTML =
+            '<span class="status status-regular">REFEIÇÃO REGULAR</span>';
 
+    }
 
-    <!-- =================================================
-         TELA 2 - TURMAS
-    ================================================= -->
 
-    <section id="tela2" class="tela escondida">
+    alimentos.forEach(function (alimento) {
 
-        <div class="container-turma">
+        const item =
+            document.createElement("li");
 
-            <h1>
-                Por favor selecione sua turma
-            </h1>
+        item.textContent = alimento;
 
-            <p class="subtitulo">
-                Escolha sua turma para visualizar o cardápio
-            </p>
 
-            <div class="turmas">
+        if (
+            alimento.startsWith(
+                "Contra turno:"
+            )
+        ) {
 
-                <button class="botao-turma" onclick="abrirCardapio('INF01')">INF01</button>
-                <button class="botao-turma" onclick="abrirCardapio('INF02')">INF02</button>
-                <button class="botao-turma" onclick="abrirCardapio('INF03')">INF03</button>
-
-                <button class="botao-turma" onclick="abrirCardapio('MAB1')">MAB1</button>
-                <button class="botao-turma" onclick="abrirCardapio('MAB2')">MAB2</button>
-                <button class="botao-turma" onclick="abrirCardapio('MAB3')">MAB3</button>
-
-                <button class="botao-turma" onclick="abrirCardapio('ADM1')">ADM1</button>
-                <button class="botao-turma" onclick="abrirCardapio('ADM2')">ADM2</button>
-                <button class="botao-turma" onclick="abrirCardapio('ADM3')">ADM3</button>
-
-                <button class="botao-turma" onclick="abrirCardapio('FLO1')">FLO1</button>
-                <button class="botao-turma" onclick="abrirCardapio('FLO2')">FLO2</button>
-                <button class="botao-turma" onclick="abrirCardapio('FLO3')">FLO3</button>
-
-            </div>
-
-            <button
-                class="botao-sair"
-                onclick="voltarInicio()">
-
-                Voltar
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         TELA 3 - CARDÁPIO
-    ================================================= -->
-
-    <section id="tela3" class="tela escondida">
-
-        <div class="container-cardapio">
-
-            <p class="titulo-cardapio">
-                IFAP REFEIÇÕES
-            </p>
-
-            <h1 id="tituloTurma">
-                Turma
-            </h1>
-
-            <p class="descricao-cardapio">
-                Confira a programação de refeições da semana
-            </p>
-
-            <div class="aviso-semana">
-
-                <strong>Importante:</strong>
-
-                a refeição regular acontece somente nos dias
-                de contra turno da turma.
-
-                Refeições em outros dias precisam ser agendadas.
-
-            </div>
-
-            <div class="semana">
-
-                <div id="card-segunda" class="dia-cardapio">
-
-                    <div class="nome-dia">
-                        <span>SEG</span>
-                        <strong>Segunda-feira</strong>
-                    </div>
-
-                    <div id="status-segunda"></div>
-
-                    <ul id="segunda"></ul>
-
-                </div>
-
-                <div id="card-terca" class="dia-cardapio">
-
-                    <div class="nome-dia">
-                        <span>TER</span>
-                        <strong>Terça-feira</strong>
-                    </div>
-
-                    <div id="status-terca"></div>
-
-                    <ul id="terca"></ul>
-
-                </div>
-
-                <div id="card-quarta" class="dia-cardapio">
-
-                    <div class="nome-dia">
-                        <span>QUA</span>
-                        <strong>Quarta-feira</strong>
-                    </div>
-
-                    <div id="status-quarta"></div>
-
-                    <ul id="quarta"></ul>
-
-                </div>
-
-                <div id="card-quinta" class="dia-cardapio">
-
-                    <div class="nome-dia">
-                        <span>QUI</span>
-                        <strong>Quinta-feira</strong>
-                    </div>
-
-                    <div id="status-quinta"></div>
-
-                    <ul id="quinta"></ul>
-
-                </div>
-
-                <div id="card-sexta" class="dia-cardapio">
-
-                    <div class="nome-dia">
-                        <span>SEX</span>
-                        <strong>Sexta-feira</strong>
-                    </div>
-
-                    <div id="status-sexta"></div>
-
-                    <ul id="sexta"></ul>
-
-                </div>
-
-            </div>
-
-            <div class="legenda">
-
-                <div class="legenda-item">
-                    <span class="bolinha bolinha-verde"></span>
-                    Dia de contra turno
-                </div>
-
-                <div class="legenda-item">
-                    <span class="bolinha bolinha-cinza"></span>
-                    Sem refeição programada
-                </div>
-
-            </div>
-
-            <button
-                class="botao-voltar-cardapio"
-                onclick="voltarTurmas()">
-
-                ← Voltar para turmas
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         TELA 4 - ADMINISTRADOR
-    ================================================= -->
-
-    <section id="tela4" class="tela escondida">
-
-        <div class="container-admin">
-
-            <p class="titulo-cardapio">
-                IFAP REFEIÇÕES
-            </p>
-
-            <h1>
-                Gerenciamento de Refeições
-            </h1>
-
-            <p class="subtitulo-admin">
-                Gerencie o cardápio das turmas e os agendamentos
-            </p>
-
-
-            <!-- GERENCIAR CARDÁPIO -->
-
-            <div class="admin-card">
-
-                <h2>
-                    Gerenciar cardápio
-                </h2>
-
-                <div class="admin-form">
-
-                    <div class="admin-campo">
-
-                        <label for="adminTurma">
-                            Turma
-                        </label>
-
-                        <select
-                            id="adminTurma"
-                            onchange="carregarCardapioAdmin()">
-
-                            <option value="INF01">INF01</option>
-                            <option value="INF02">INF02</option>
-                            <option value="INF03">INF03</option>
-
-                            <option value="MAB1">MAB1</option>
-                            <option value="MAB2">MAB2</option>
-                            <option value="MAB3">MAB3</option>
-
-                            <option value="ADM1">ADM1</option>
-                            <option value="ADM2">ADM2</option>
-                            <option value="ADM3">ADM3</option>
-
-                            <option value="FLO1">FLO1</option>
-                            <option value="FLO2">FLO2</option>
-                            <option value="FLO3">FLO3</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="admin-campo">
-
-                        <label for="adminDia">
-                            Dia da semana
-                        </label>
-
-                        <select
-                            id="adminDia"
-                            onchange="carregarCardapioAdmin()">
-
-                            <option value="segunda">Segunda-feira</option>
-                            <option value="terca">Terça-feira</option>
-                            <option value="quarta">Quarta-feira</option>
-                            <option value="quinta">Quinta-feira</option>
-                            <option value="sexta">Sexta-feira</option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-                <div class="adicionar-alimento">
-
-                    <input
-                        type="text"
-                        id="novoAlimento"
-                        placeholder="Digite o nome do alimento">
-
-                    <button
-                        class="botao-admin"
-                        onclick="adicionarItemAdmin()">
-
-                        + Adicionar alimento
-
-                    </button>
-
-                </div>
-
-                <ul
-                    id="listaAdmin"
-                    class="lista-admin">
-                </ul>
-
-            </div>
-
-
-            <!-- AGENDAMENTO -->
-
-            <button
-                class="botao-agendar"
-                onclick="abrirFormularioAgendamento()">
-
-                + Agendar refeição
-
-            </button>
-
-
-            <div
-                id="formAgendamento"
-                class="form-agendamento">
-
-                <h3>
-                    Agendar nova refeição
-                </h3>
-
-                <div class="admin-form">
-
-                    <div class="admin-campo">
-
-                        <label for="dataAgendamento">
-                            Data da refeição
-                        </label>
-
-                        <input
-                            type="date"
-                            id="dataAgendamento">
-
-                    </div>
-
-                    <div class="admin-campo">
-
-                        <label for="tipoRefeicao">
-                            Tipo de refeição
-                        </label>
-
-                        <select id="tipoRefeicao">
-
-                            <option value="Almoço">
-                                Almoço
-                            </option>
-
-                            <option value="Lanche">
-                                Lanche
-                            </option>
-
-                            <option value="Café da manhã">
-                                Café da manhã
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="admin-campo">
-
-                        <label for="turmaAgendamento">
-                            Turma
-                        </label>
-
-                        <select id="turmaAgendamento">
-
-                            <option value="INF01">INF01</option>
-                            <option value="INF02">INF02</option>
-                            <option value="INF03">INF03</option>
-
-                            <option value="MAB1">MAB1</option>
-                            <option value="MAB2">MAB2</option>
-                            <option value="MAB3">MAB3</option>
-
-                            <option value="ADM1">ADM1</option>
-                            <option value="ADM2">ADM2</option>
-                            <option value="ADM3">ADM3</option>
-
-                            <option value="FLO1">FLO1</option>
-                            <option value="FLO2">FLO2</option>
-                            <option value="FLO3">FLO3</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="admin-campo">
-
-                        <label for="solicitante">
-                            Pessoa solicitante
-                        </label>
-
-                        <input
-                            type="text"
-                            id="solicitante"
-                            placeholder="Nome do professor ou funcionário">
-
-                    </div>
-
-                </div>
-
-                <div style="text-align:center; margin-top:20px;">
-
-                    <button
-                        class="botao-admin"
-                        onclick="confirmarAgendamento()">
-
-                        Confirmar agendamento
-
-                    </button>
-
-                    <button
-                        class="botao-admin"
-                        onclick="fecharFormularioAgendamento()"
-                        style="background-color:#777777; border-color:#666666;">
-
-                        Cancelar
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- AGENDAMENTOS -->
-
-            <div class="admin-card">
-
-                <h2>
-                    Agendamentos
-                </h2>
-
-                <div id="listaAgendamentos">
-                </div>
-
-            </div>
-
-
-            <button
-                class="botao-sair-admin"
-                onclick="voltarInicioAdministrador()">
-
-                ← Voltar
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         JAVASCRIPT
-    ================================================= -->
-
-    <script>
-
-        /* =====================================
-           CARDÁPIOS DAS TURMAS
-        ===================================== */
-
-        const cardapios = {
-
-            INF01: {
-
-                segunda: ["Arroz","Feijão","Frango assado","Salada"],
-
-                terca: [
-                    "Arroz",
-                    "Feijão",
-                    "Carne moída",
-                    "Farofa",
-                    "Contra turno: Bolo e suco"
-                ],
-
-                quarta: ["Macarrão","Frango","Salada"],
-
-                quinta: [
-                    "Arroz",
-                    "Feijão",
-                    "Peixe",
-                    "Legumes",
-                    "Contra turno: Sanduíche natural e suco"
-                ],
-
-                sexta: ["Arroz","Feijão","Carne assada","Salada"]
-
-            },
-
-
-            INF02: {
-
-                segunda: ["Arroz","Feijão","Carne assada","Salada"],
-
-                terca: ["Macarrão","Frango","Legumes"],
-
-                quarta: [
-                    "Arroz",
-                    "Feijão",
-                    "Frango",
-                    "Salada",
-                    "Contra turno: Pão com queijo e suco"
-                ],
-
-                quinta: ["Arroz","Feijão","Carne moída","Farofa"],
-
-                sexta: [
-                    "Arroz",
-                    "Feijão",
-                    "Peixe",
-                    "Salada",
-                    "Contra turno: Fruta e iogurte"
-                ]
-
-            },
-
-
-            INF03: {
-
-                segunda: ["Arroz","Feijão","Frango","Salada"],
-
-                terca: [
-                    "Arroz",
-                    "Carne",
-                    "Legumes",
-                    "Contra turno: Bolo e suco"
-                ],
-
-                quarta: ["Macarrão","Carne moída","Salada"],
-
-                quinta: ["Arroz","Feijão","Frango assado","Farofa"],
-
-                sexta: [
-                    "Arroz",
-                    "Feijão",
-                    "Carne",
-                    "Salada",
-                    "Contra turno: Sanduíche e suco"
-                ]
-
-            },
-
-
-            MAB1: {
-
-                segunda: ["Arroz","Feijão","Frango"],
-
-                terca: [
-                    "Macarrão",
-                    "Carne",
-                    "Salada",
-                    "Contra turno: Fruta e suco"
-                ],
-
-                quarta: ["Arroz","Feijão","Peixe","Legumes"],
-
-                quinta: ["Arroz","Frango","Salada"],
-
-                sexta: [
-                    "Arroz",
-                    "Feijão",
-                    "Carne",
-                    "Contra turno: Pão com queijo"
-                ]
-
-            },
-
-
-            MAB2: {
-
-                segunda: ["Arroz","Feijão","Carne"],
-
-                terca: ["Macarrão","Frango","Salada"],
-
-                quarta: [
-                    "Arroz",
-                    "Feijão",
-                    "Peixe",
-                    "Contra turno: Bolo e suco"
-                ],
-
-                quinta: ["Arroz","Carne moída","Legumes"],
-
-                sexta: [
-                    "Arroz",
-                    "Feijão",
-                    "Frango",
-                    "Contra turno: Fruta e iogurte"
-                ]
-
-            },
-
-
-            MAB3: {
-
-                segunda: ["Arroz","Feijão","Frango assado"],
-
-                terca: ["Arroz","Carne","Salada"],
-
-                quarta: [
-                    "Macarrão",
-                    "Frango",
-                    "Legumes",
-                    "Contra turno: Sanduíche natural"
-                ],
-
-                quinta: ["Arroz","Feijão","Peixe"],
-
-                sexta: [
-                    "Arroz",
-                    "Carne",
-                    "Salada",
-                    "Contra turno: Bolo e suco"
-                ]
-
-            },
-
-
-            ADM1: {
-
-                segunda: ["Arroz","Feijão","Carne","Salada"],
-
-                terca: ["Macarrão","Frango","Farofa"],
-
-                quarta: [
-                    "Arroz",
-                    "Feijão",
-                    "Peixe",
-                    "Contra turno: Fruta e suco"
-                ],
-
-                quinta: ["Arroz","Carne moída","Legumes"],
-
-                sexta: [
-                    "Arroz",
-                    "Feijão",
-                    "Frango",
-                    "Contra turno: Pão com queijo"
-                ]
-
-            },
-
-
-            ADM2: {
-
-                segunda: ["Arroz","Feijão","Frango"],
-
-                terca: [
-                    "Arroz",
-                    "Carne",
-                    "Salada",
-                    "Contra turno: Bolo e suco"
-                ],
-
-                quarta: ["Macarrão","Frango","Legumes"],
-
-                quinta: ["Arroz","Feijão","Peixe"],
-
-                sexta: [
-                    "Arroz",
-                    "Carne",
-                    "Legumes",
-                    "Contra turno: Sanduíche natural"
-                ]
-
-            },
-
-
-            ADM3: {
-
-                segunda: ["Arroz","Feijão","Carne assada"],
-
-                terca: ["Macarrão","Frango","Salada"],
-
-                quarta: [
-                    "Arroz",
-                    "Feijão",
-                    "Carne moída",
-                    "Contra turno: Fruta e iogurte"
-                ],
-
-                quinta: ["Arroz","Peixe","Legumes"],
-
-                sexta: [
-                    "Arroz",
-                    "Feijão",
-                    "Frango",
-                    "Contra turno: Bolo e suco"
-                ]
-
-            },
-
-
-            FLO1: {
-
-                segunda: [
-                    "Arroz",
-                    "Feijão",
-                    "Frango",
-                    "Contra turno: Sanduíche e suco"
-                ],
-
-                terca: ["Macarrão","Carne","Salada"],
-
-                quarta: ["Arroz","Feijão","Peixe"],
-
-                quinta: [
-                    "Arroz",
-                    "Frango",
-                    "Salada",
-                    "Contra turno: Fruta"
-                ],
-
-                sexta: ["Arroz","Feijão","Carne"]
-
-            },
-
-
-            FLO2: {
-
-                segunda: ["Arroz","Feijão","Carne"],
-
-                terca: [
-                    "Arroz",
-                    "Frango",
-                    "Legumes",
-                    "Contra turno: Bolo e suco"
-                ],
-
-                quarta: ["Macarrão","Carne moída"],
-
-                quinta: ["Arroz","Feijão","Peixe"],
-
-                sexta: [
-                    "Arroz",
-                    "Frango",
-                    "Salada",
-                    "Contra turno: Pão com queijo"
-                ]
-
-            },
-
-
-            FLO3: {
-
-                segunda: ["Arroz","Feijão","Frango assado"],
-
-                terca: ["Macarrão","Carne","Salada"],
-
-                quarta: [
-                    "Arroz",
-                    "Feijão",
-                    "Peixe",
-                    "Contra turno: Fruta e suco"
-                ],
-
-                quinta: ["Arroz","Carne","Legumes"],
-
-                sexta: [
-                    "Arroz",
-                    "Feijão",
-                    "Frango",
-                    "Contra turno: Sanduíche natural"
-                ]
-
-            }
-
-        };
-
-
-        /* =====================================
-           DIAS DE CONTRA TURNO
-        ===================================== */
-
-        const diasSemana = [
-            "segunda",
-            "terca",
-            "quarta",
-            "quinta",
-            "sexta"
-        ];
-
-
-        function ehContraTurno(alimentos) {
-
-            return alimentos.some(function(alimento) {
-
-                return alimento.startsWith("Contra turno:");
-
-            });
-
-        }
-
-
-        /* =====================================
-           ENTRAR COMO ALUNO
-        ===================================== */
-
-        function entrarAluno() {
-
-            document
-                .querySelector(".pagina")
-                .style.display = "none";
-
-            document
-                .getElementById("tela2")
-                .classList.remove("escondida");
-
-        }
-
-
-        /* =====================================
-           ABRIR CARDÁPIO
-        ===================================== */
-
-        function abrirCardapio(turma) {
-
-            document
-                .getElementById("tela2")
-                .classList.add("escondida");
-
-            document
-                .getElementById("tela3")
-                .classList.remove("escondida");
-
-            document
-                .getElementById("tituloTurma")
-                .textContent = turma;
-
-            const cardapio = cardapios[turma];
-
-            diasSemana.forEach(function(dia) {
-
-                mostrarRefeicao(
-                    dia,
-                    cardapio[dia]
-                );
-
-            });
-
-        }
-
-
-        /* =====================================
-           MOSTRAR REFEIÇÕES
-        ===================================== */
-
-        function mostrarRefeicao(dia, alimentos) {
-
-            const lista =
-                document.getElementById(dia);
-
-            const card =
-                document.getElementById("card-" + dia);
-
-            const status =
-                document.getElementById("status-" + dia);
-
-            lista.innerHTML = "";
-            status.innerHTML = "";
-
-            card.classList.remove(
-                "dia-contraturno",
-                "dia-sem-refeicao"
-            );
-
-            if (!alimentos || alimentos.length === 0) {
-
-                card.classList.add("dia-sem-refeicao");
-
-                status.innerHTML =
-                    '<span class="status status-sem-refeicao">SEM REFEIÇÃO</span>';
-
-                lista.innerHTML = `
-                    <div class="sem-refeicao">
-                        <span class="icone">🍽️</span>
-                        Não há refeição programada
-                        para esta turma neste dia.
-                    </div>
-                `;
-
-                return;
-            }
-
-            const contraTurno =
-                ehContraTurno(alimentos);
-
-            if (contraTurno) {
-
-                card.classList.add("dia-contraturno");
-
-                status.innerHTML =
-                    '<span class="status status-contraturno">🍽️ CONTRA TURNO</span>';
-
-            } else {
-
-                card.classList.add("dia-sem-refeicao");
-
-                status.innerHTML =
-                    '<span class="status status-sem-refeicao">REFEIÇÃO REGULAR</span>';
-
-            }
-
-            alimentos.forEach(function(alimento) {
-
-                const item =
-                    document.createElement("li");
-
-                item.textContent = alimento;
-
-                if (alimento.startsWith("Contra turno:")) {
-
-                    item.classList.add(
-                        "contra-turno-item"
-                    );
-
-                }
-
-                lista.appendChild(item);
-
-            });
-
-        }
-
-
-        /* =====================================
-           VOLTAR PARA TURMAS
-        ===================================== */
-
-        function voltarTurmas() {
-
-            document
-                .getElementById("tela3")
-                .classList.add("escondida");
-
-            document
-                .getElementById("tela2")
-                .classList.remove("escondida");
-
-        }
-
-
-        /* =====================================
-           VOLTAR PARA INÍCIO
-        ===================================== */
-
-        function voltarInicio() {
-
-            document
-                .getElementById("tela2")
-                .classList.add("escondida");
-
-            document
-                .getElementById("tela3")
-                .classList.add("escondida");
-
-            document
-                .getElementById("tela4")
-                .classList.add("escondida");
-
-            document
-                .querySelector(".pagina")
-                .style.display = "flex";
-
-        }
-
-
-        /* =====================================
-           MENSAGEM ADMIN
-        ===================================== */
-
-        function mostrarMensagemAdmin() {
-
-            document
-                .getElementById("mensagem")
-                .style.color = "#555555";
-
-            document
-                .getElementById("mensagem")
-                .textContent =
-                "Digite a senha do administrador.";
-
-            document
-                .getElementById("senha")
-                .focus();
-
-        }
-
-
-        /* =====================================
-           ENTRAR COMO ADMINISTRADOR
-        ===================================== */
-
-        function entrarAdministrador() {
-
-            const campoSenha =
-                document.getElementById("senha");
-
-            const senha =
-                campoSenha.value.trim();
-
-            const mensagem =
-                document.getElementById("mensagem");
-
-            if (senha === "1234") {
-
-                mensagem.style.color =
-                    "#3ead44";
-
-                mensagem.textContent =
-                    "Senha correta!";
-
-                /*
-                   ESCONDE A TELA INICIAL
-                */
-
-                document
-                    .querySelector(".pagina")
-                    .style.display = "none";
-
-                /*
-                   MOSTRA A TELA DO ADMINISTRADOR
-                */
-
-                document
-                    .getElementById("tela4")
-                    .classList.remove("escondida");
-
-                /*
-                   CARREGA O CARDÁPIO ADMIN
-                */
-
-                carregarCardapioAdmin();
-
-                /*
-                   CARREGA OS AGENDAMENTOS
-                */
-
-                carregarAgendamentos();
-
-            } else {
-
-                mensagem.style.color =
-                    "#d32f2f";
-
-                mensagem.textContent =
-                    "Senha incorreta.";
-
-                campoSenha.focus();
-
-            }
-
-        }
-
-
-        /* =====================================
-           CARDÁPIO DO ADMINISTRADOR
-        ===================================== */
-
-        function carregarCardapioAdmin() {
-
-            const turma =
-                document.getElementById("adminTurma").value;
-
-            const dia =
-                document.getElementById("adminDia").value;
-
-            const lista =
-                document.getElementById("listaAdmin");
-
-            lista.innerHTML = "";
-
-            const dados =
-                cardapios[turma];
-
-            if (!dados) {
-
-                lista.innerHTML =
-                    '<li class="sem-agendamentos">Cardápio não encontrado.</li>';
-
-                return;
-
-            }
-
-            if (!dados[dia]) {
-
-                dados[dia] = [];
-
-            }
-
-            const alimentos =
-                dados[dia];
-
-            if (alimentos.length === 0) {
-
-                lista.innerHTML = `
-                    <li class="sem-agendamentos">
-                        Nenhum alimento cadastrado para este dia.
-                    </li>
-                `;
-
-                return;
-
-            }
-
-            alimentos.forEach(
-                function(alimento, indice) {
-
-                    const item =
-                        document.createElement("li");
-
-                    item.className =
-                        "item-admin";
-
-                    const texto =
-                        document.createElement("span");
-
-                    texto.textContent =
-                        "• " + alimento;
-
-                    const botao =
-                        document.createElement("button");
-
-                    botao.className =
-                        "botao-excluir";
-
-                    botao.textContent =
-                        "🗑️ Excluir";
-
-                    botao.onclick =
-                        function() {
-
-                            excluirItemAdmin(indice);
-
-                        };
-
-                    item.appendChild(texto);
-                    item.appendChild(botao);
-
-                    lista.appendChild(item);
-
-                }
+            item.classList.add(
+                "contra-turno-item"
             );
 
         }
 
 
-        /* =====================================
-           ADICIONAR ALIMENTO
-        ===================================== */
+        lista.appendChild(item);
 
-        function adicionarItemAdmin() {
+    });
 
-            const turma =
-                document.getElementById("adminTurma").value;
+}
 
-            const dia =
-                document.getElementById("adminDia").value;
 
-            const campo =
-                document.getElementById("novoAlimento");
+/* =====================================
+   VOLTAR PARA TURMAS
+===================================== */
 
-            const alimento =
-                campo.value.trim();
+function voltarTurmas() {
 
-            if (alimento === "") {
+    document
+        .getElementById("tela3")
+        .classList.add("escondida");
 
-                alert(
-                    "Digite o nome do alimento."
-                );
+    document
+        .getElementById("tela2")
+        .classList.remove("escondida");
 
-                campo.focus();
+}
 
-                return;
 
-            }
+/* =====================================
+   VOLTAR PARA INÍCIO
+===================================== */
 
-            if (!cardapios[turma][dia]) {
+function voltarInicio() {
 
-                cardapios[turma][dia] = [];
+    document
+        .getElementById("tela2")
+        .classList.add("escondida");
 
-            }
+    document
+        .getElementById("tela3")
+        .classList.add("escondida");
 
-            cardapios[turma][dia].push(
-                alimento
-            );
 
-            campo.value = "";
+    const tela4 =
+        document.getElementById("tela4");
 
-            carregarCardapioAdmin();
+    if (tela4) {
 
-            campo.focus();
+        tela4.classList.add(
+            "escondida"
+        );
 
-        }
+    }
 
 
-        /* =====================================
-           EXCLUIR ALIMENTO
-        ===================================== */
+    document.querySelector(".pagina").style.display =
+        "flex";
 
-        function excluirItemAdmin(indice) {
+}
 
-            const turma =
-                document.getElementById("adminTurma").value;
 
-            const dia =
-                document.getElementById("adminDia").value;
+/* =====================================
+   MENSAGEM ADMIN
+===================================== */
 
-            if (
-                !cardapios[turma] ||
-                !cardapios[turma][dia]
-            ) {
+function mostrarMensagemAdmin() {
 
-                return;
+    const mensagem =
+        document.getElementById("mensagem");
 
-            }
+    mensagem.style.color = "#555555";
 
-            cardapios[turma][dia]
-                .splice(indice, 1);
+    mensagem.textContent =
+        "Digite a senha do administrador.";
 
-            carregarCardapioAdmin();
+    document
+        .getElementById("senha")
+        .focus();
 
-        }
+}
 
 
-        /* =====================================
-           FORMULÁRIO DE AGENDAMENTO
-        ===================================== */
+/* =====================================
+   CARREGAR DADOS AO ABRIR O SITE
+===================================== */
 
-        function abrirFormularioAgendamento() {
+window.addEventListener(
+    "load",
+    function () {
 
-            document
-                .getElementById("formAgendamento")
-                .classList.add("aberto");
+        carregarDadosDoServidor();
 
-        }
-
-
-        function fecharFormularioAgendamento() {
-
-            document
-                .getElementById("formAgendamento")
-                .classList.remove("aberto");
-
-        }
-
-
-        /* =====================================
-           AGENDAMENTOS
-        ===================================== */
-
-        const agendamentosAdministrador = [];
-
-
-        function confirmarAgendamento() {
-
-            const data =
-                document
-                .getElementById("dataAgendamento")
-                .value;
-
-            const tipo =
-                document
-                .getElementById("tipoRefeicao")
-                .value;
-
-            const turma =
-                document
-                .getElementById("turmaAgendamento")
-                .value;
-
-            const solicitante =
-                document
-                .getElementById("solicitante")
-                .value
-                .trim();
-
-            if (data === "") {
-
-                alert(
-                    "Selecione a data da refeição."
-                );
-
-                return;
-
-            }
-
-            if (solicitante === "") {
-
-                alert(
-                    "Digite o nome do solicitante."
-                );
-
-                document
-                    .getElementById("solicitante")
-                    .focus();
-
-                return;
-
-            }
-
-            const novoAgendamento = {
-
-                data: data,
-                tipo: tipo,
-                turma: turma,
-                solicitante: solicitante,
-                status: "Solicitada"
-
-            };
-
-            agendamentosAdministrador.push(
-                novoAgendamento
-            );
-
-            fecharFormularioAgendamento();
-
-            document
-                .getElementById("dataAgendamento")
-                .value = "";
-
-            document
-                .getElementById("solicitante")
-                .value = "";
-
-            carregarAgendamentos();
-
-            alert(
-                "Refeição agendada com sucesso!"
-            );
-
-        }
-
-
-        /* =====================================
-           MOSTRAR AGENDAMENTOS
-        ===================================== */
-
-        function carregarAgendamentos() {
-
-            const area =
-                document.getElementById(
-                    "listaAgendamentos"
-                );
-
-            area.innerHTML = "";
-
-            if (
-                agendamentosAdministrador.length === 0
-            ) {
-
-                area.innerHTML = `
-                    <div class="sem-agendamentos">
-                        Nenhum agendamento registrado.
-                    </div>
-                `;
-
-                return;
-
-            }
-
-            const tabela =
-                document.createElement("table");
-
-            tabela.className =
-                "tabela-agendamentos";
-
-            tabela.innerHTML = `
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Solicitante</th>
-                        <th>Turma</th>
-                        <th>Refeição</th>
-                        <th>Status</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-
-                <tbody></tbody>
-            `;
-
-            area.appendChild(tabela);
-
-            const corpo =
-                tabela.querySelector("tbody");
-
-            agendamentosAdministrador.forEach(
-                function(agendamento, indice) {
-
-                    const linha =
-                        document.createElement("tr");
-
-                    const dataFormatada =
-                        formatarData(
-                            agendamento.data
-                        );
-
-                    const tdData =
-                        document.createElement("td");
-
-                    tdData.textContent =
-                        dataFormatada;
-
-                    const tdSolicitante =
-                        document.createElement("td");
-
-                    tdSolicitante.textContent =
-                        agendamento.solicitante;
-
-                    const tdTurma =
-                        document.createElement("td");
-
-                    tdTurma.textContent =
-                        agendamento.turma;
-
-                    const tdTipo =
-                        document.createElement("td");
-
-                    tdTipo.textContent =
-                        agendamento.tipo;
-
-                    const tdStatus =
-                        document.createElement("td");
-
-                    const status =
-                        document.createElement("span");
-
-                    status.className =
-                        "status-agendamento";
-
-                    status.textContent =
-                        agendamento.status;
-
-                    tdStatus.appendChild(status);
-
-                    const tdAcao =
-                        document.createElement("td");
-
-                    const botao =
-                        document.createElement("button");
-
-                    botao.className =
-                        "botao-excluir";
-
-                    botao.textContent =
-                        "🗑️";
-
-                    botao.onclick =
-                        function() {
-
-                            excluirAgendamento(
-                                indice
-                            );
-
-                        };
-
-                    tdAcao.appendChild(botao);
-
-                    linha.appendChild(tdData);
-                    linha.appendChild(tdSolicitante);
-                    linha.appendChild(tdTurma);
-                    linha.appendChild(tdTipo);
-                    linha.appendChild(tdStatus);
-                    linha.appendChild(tdAcao);
-
-                    corpo.appendChild(linha);
-
-                }
-            );
-
-        }
-
-
-        /* =====================================
-           FORMATAR DATA
-        ===================================== */
-
-        function formatarData(data) {
-
-            const partes =
-                data.split("-");
-
-            if (partes.length !== 3) {
-
-                return data;
-
-            }
-
-            return (
-                partes[2] +
-                "/" +
-                partes[1] +
-                "/" +
-                partes[0]
-            );
-
-        }
-
-
-        /* =====================================
-           EXCLUIR AGENDAMENTO
-        ===================================== */
-
-        function excluirAgendamento(indice) {
-
-            agendamentosAdministrador
-                .splice(indice, 1);
-
-            carregarAgendamentos();
-
-        }
-
-
-        /* =====================================
-           SAIR DO ADMINISTRADOR
-        ===================================== */
-
-        function voltarInicioAdministrador() {
-
-            document
-                .getElementById("tela4")
-                .classList.add("escondida");
-
-            document
-                .getElementById("tela2")
-                .classList.add("escondida");
-
-            document
-                .getElementById("tela3")
-                .classList.add("escondida");
-
-            document
-                .querySelector(".pagina")
-                .style.display = "flex";
-
-            document
-                .getElementById("senha")
-                .value = "";
-
-            document
-                .getElementById("mensagem")
-                .textContent = "";
-
-            fecharFormularioAgendamento();
-
-        }
-
-
-        /* =====================================
-           ENTER NA SENHA
-        ===================================== */
-
-        document
-            .getElementById("senha")
-            .addEventListener(
-                "keydown",
-                function(event) {
-
-                    if (event.key === "Enter") {
-
-                        entrarAdministrador();
-
-                    }
-
-                }
-            );
-
-    </script>
-
-</body>
-
-</html>
+    }
+);
